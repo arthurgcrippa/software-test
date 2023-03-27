@@ -84,28 +84,12 @@ class MyTestCase(unittest.TestCase):
 
     def test_adiciona_transação(self):
         banco_brasil = Banco("Banco do Brasil", Moeda.BRL)
+            
         print("test")
         # INLINE FIXTURE SETUP
         # EXERCISE SUT
         # RESULT VERIFICATION
         # TEARDOWN
-
-    def test_calcula_saldo_positivo(self):
-        banco_brasil = Banco("Banco do Brasil", Moeda.BRL)
-        print("test")
-        # INLINE FIXTURE SETUP
-        # EXERCISE SUT
-        # RESULT VERIFICATION
-        # TEARDOWN
-
-    def test_calcula_saldo_negativo(self):
-        banco_brasil = Banco("Banco do Brasil", Moeda.BRL)
-        print("test")
-        # INLINE FIXTURE SETUP
-        # EXERCISE SUT
-        # RESULT VERIFICATION
-        # TEARDOWN
-
 
 
 if __name__ == '__main__':

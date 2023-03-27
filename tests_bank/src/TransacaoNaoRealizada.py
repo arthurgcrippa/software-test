@@ -1,5 +1,5 @@
-from Transacao import Transacao
-from ValorMonetario import ValorMonetario
+from src.Transacao import Transacao
+from src.ValorMonetario import ValorMonetario
 
 class TransacaoNaoRealizada(Transacao):
 

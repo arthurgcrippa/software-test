@@ -1,13 +1,13 @@
-from Moeda import Moeda
+from src.Moeda import Moeda
 from src.Dinheiro import Dinheiro
-from ValorMonetario import ValorMonetario
+from src.ValorMonetario import ValorMonetario
 from src.Banco import Banco
 from src.Conta import Conta
 from src.Entrada import Entrada
-from Saida import Saida
+from src.Saida import Saida
 from src.EstadosDeOperacao import EstadosDeOperacao
-from TransacaoNaoRealizada import TransacaoNaoRealizada
-from Operacao import Operacao
+from src.TransacaoNaoRealizada import TransacaoNaoRealizada
+from src.Operacao import Operacao
 
 class SistemaBancario:
 
@@ -31,14 +31,14 @@ class SistemaBancario:
 			entrada = TransacaoNaoRealizada(entrada)
 			estado = EstadosDeOperacao.MOEDA_INVALIDA
 		conta.adicionar_transacao(entrada)
-		return Operacao(estado, entrada)
+		return Operacao(estado)
 
 	def saldo_ficara_negativo(self, saldo : ValorMonetario, quantia : Dinheiro):
 		return saldo.obter_quantia().obter_quantia_em_escala() < quantia.obter_quantia_em_escala()
 
 	def sacar(self, conta : Conta, quantia : Dinheiro):
 		saldo = conta.calcular_saldo()
-		saida = Saida(conta, quantia)
+		saida = Saida(quantia)
 		estado = EstadosDeOperacao.SUCESSO
 		if (saldo.negativo() or self.saldo_ficara_negativo(saldo, quantia)):
 			saida = TransacaoNaoRealizada(saida)
@@ -47,7 +47,7 @@ class SistemaBancario:
 			saida = TransacaoNaoRealizada(saida)
 			estado = EstadosDeOperacao.MOEDA_INVALIDA
 		conta.adicionar_transacao(saida)
-		return Operacao(estado, saida)
+		return Operacao(estado)
 
 	def transferir(self, origem : Conta, destino : Conta, quantia : Dinheiro):
 		saida = Saida(quantia)
